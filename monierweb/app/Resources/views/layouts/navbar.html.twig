@@ -29,16 +29,24 @@
     		<li><a href="#">Blog</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li>
-          <a class="nav-link" href="{#{ path('fos_user_security_login') }#}">
-              Se connecter
-          </a>
-        </li>
-        <li>
-            <a class="nav-link" href="{#{ path('fos_user_registration_register') }#}">
-                S'inscrire
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+          <li>
+              <a class="nav-link" href="{{ path('fos_user_security_logout') }}">
+                  Se déconnecter
+              </a>
+          </li>
+        {% else %}
+          <li>
+            <a class="nav-link" href="{{ path('fos_user_security_login') }}">
+                Se connecter
             </a>
-        </li>
+          </li>
+          <li>
+              <a class="nav-link" href="{{ path('fos_user_registration_register') }}">
+                  S'inscrire
+              </a>
+          </li>
+        {% endif %}
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

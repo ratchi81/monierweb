@@ -15,7 +15,7 @@ class DefaultController extends Controller
     {
         // replace this example code with whatever you need
         //return $this->render('default/index.html.twig', [
-            return $this->render('base.html.twig', [
+            return $this->render('layouts/base.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
         ]);
     }
@@ -24,6 +24,7 @@ class DefaultController extends Controller
      */
      public function testRoleUserAction(Request $request)
      {
+       //$this->denyAccessUnlessGranted('ROLE_USER')
        return $this->render('exemple/hello.html.twig');
      }
      /**
@@ -31,6 +32,7 @@ class DefaultController extends Controller
       */
       public function testRoleAdminAction(Request $request)
       {
+        //$this->denyAccessUnlessGranted('ROLE_ADMIN')
         return $this->render('exemple/hello_admin.html.twig');
       }
 }
